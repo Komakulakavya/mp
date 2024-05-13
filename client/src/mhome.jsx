@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './mhome.css';
 import { useNavigate } from 'react-router-dom';
 import image1 from './assets/images1.svg';
+import img from './assets/sensi-logo1.png';
 import image2 from './assets/images2.svg';
 import image3 from './assets/image3.svg';
 import image4 from './assets/images4.svg';
@@ -69,7 +70,6 @@ function Mhome() {
       section.classList.add('section--hidden');
     });
   }, []);
-
   const handleHover = e => {
     if (e.target.classList.contains('nav__link')) {
       const link = e.target;
@@ -87,13 +87,16 @@ function Mhome() {
       <header className='header'>
         <nav className='nav1'>
           <img 
-            src="assests/sensi-logo1.png"
+            src={img}
             alt="sens logo"
             className="nav__logo"
             id="logo"
             designer="kavya"
           />
           <ul className="nav__links">
+          <li className="nav__item">
+            <a className="nav__link" href="/">Home</a>
+          </li>
             <li className="nav__item">
               <a className="nav__link" href="#section--1">WhyUs</a>
             </li>
@@ -104,7 +107,7 @@ function Mhome() {
               <a className="nav__link" href="#section--3">Testimonials</a>
             </li>
             <li className="nav__item">
-              <a className="nav_link nav_link--btn btn--show-modal" href="#">AboutUs</a>
+              <a className="nav_link nav_link--btn btn--show-modal btn btn--text" href="#">AboutUs</a>
             </li>
           </ul>
         </nav>
@@ -119,14 +122,14 @@ function Mhome() {
               structure?? 
             </h1>
             <h4 className="sub-text">Best solution is follow our DSA  course !</h4>
-            <button className="btn--text btn--scroll-to">Learn more &DownArrow;</button>
+            <button className="btn--text btn--scroll-to">Learn more</button>
             </div>
           </div>
           <div>
             <img 
               src={image1}
               alt="Minimalist bank items"
-              className='header--img'
+              className='header--img' 
             />
           </div>
         </div>

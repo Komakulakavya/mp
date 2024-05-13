@@ -42,7 +42,7 @@ function App() {
       <Route path='/quizlinkedlist' element={<Quizlinkedlist />}></Route>
       <Route path='/quizgraphs' element={<Quizgraphs />}></Route>
       <Route path='/quiztrees' element={<Quiztrees />}></Route>
-      <Route path='/mhome' element={<Mhome />}></Route>
+      <Route path='/' element={<Mhome />}></Route>
       <Route path='/header' element={<Header />}></Route>
      </Routes>
    </BrowserRouter>

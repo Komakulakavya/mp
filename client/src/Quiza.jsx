@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import './Quiz.css';
 import { data } from './data'; // Adjusted import path
 import { useNavigate } from 'react-router-dom';
+import Header from './header';
+import Footer from './footer';
 
 const Quiza = ({ onQuizComplete }) => {
     const [index, setIndex] = useState(0); // Start from index 0
@@ -65,12 +67,11 @@ const Quiza = ({ onQuizComplete }) => {
     const percentageScore = (score / data.length) * 100;
 
     return (
+        <>
+        <Header />
         <div className='container'>
             <h1>Quiz</h1>
-            <hr />
-            <div>
-                <h2>Time Left: {Math.floor(timeLeft / 60)}:{("0" + (timeLeft % 60)).slice(-2)}</h2>
-            </div>
+            {!quizCompleted && <h2>Time Left: {Math.floor(timeLeft / 60)}:{("0" + (timeLeft % 60)).slice(-2)}</h2>}
             {index < data.length && !quizCompleted && ( // Render questions if index is less than data length and quiz is not completed
                 <>
                     <h2>{index + 1}.{question.question}</h2>
@@ -81,17 +82,21 @@ const Quiza = ({ onQuizComplete }) => {
                         <li ref={optionRefs[3]} onClick={(e) => { checkAns(e, 4) }} className={selectedAnswer === 4 ? "selected" : ""}>{question.option4}</li>
                     </ul>
                     <button onClick={handleNext}>Next</button>
+                    <a href='./home' style={{fontSize:'2rem' ,color:'yellowgreen',backgroundColor:'black',textAlign:'center',textDecoration:'none',borderRadius:'4px',width:'7rem'}}>Back</a>
                     <div className='index'>{index + 1} of {data.length} questions</div>
                 </>
             )}
             {index >= data.length || quizCompleted && ( // Render score if index is greater than or equal to data length or quiz is completed
-                <div>
+                <div style={{width:'100%',height:'22vh'}}>
                     <h2>Score: {score} out of {data.length}</h2>
                     <h2>Percentage Score: {percentageScore}%</h2> {/* Display percentage score */}
                     {percentageScore > 50 ? <p>You have cleared the exam!<button onClick={handleQuizCompletion} style={{ backgroundColor: 'green', color: 'white', border: 'none', borderRadius: '5px', padding: '10px 20px', cursor: 'pointer' }} >completed</button></p> : <p>You have not cleared the exam.</p>}
+                    <a href='./home' style={{fontSize:'2rem' ,color:'yellowgreen',backgroundColor:'black',textAlign:'center',textDecoration:'none',borderRadius:'4px',width:'7rem'}}>Back</a>
                 </div>
             )}
         </div>
+        <Footer />
+        </>
     );
 };
 

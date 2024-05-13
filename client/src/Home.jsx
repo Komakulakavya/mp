@@ -3,13 +3,14 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-
+import Header from './header';
+import Footer from './footer';
 function Home() {
     const [name, setName] = useState("");
     const location = useLocation();
     const email = new URLSearchParams(location.search).get('email');
     const navigate = useNavigate();
-    const [progress, setProgress] = useState(0);
+    const progress  = 30;
 
     useEffect(() => {
         const storedName = localStorage.getItem('name');
@@ -31,11 +32,9 @@ function Home() {
     };
 
     return (
+        <>
+        <Header />
         <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center' }}>
-            <header style={{ backgroundColor: '#333', color: '#fff', padding: '20px' }}>
-                <h1 style={{ fontSize: '3rem', margin: '0', marginBottom: '10px' }}>Solve DSA</h1>
-                <p style={{ fontSize: '1.5rem', margin: '0' }}>Start solving Data Structures and Algorithms problems</p>
-            </header>
             <div style={{ padding: '40px' }}>
                 <h4 style={{ fontSize: '2.5rem', marginBottom: '40px' }}>Welcome, {name || "User"}!</h4>
                 <div style={{ width: '150px', height: '150px', margin: '0 auto', marginBottom: '40px' }}>
@@ -51,6 +50,8 @@ function Home() {
                 </div>
             </div>
         </div>
+        <Footer/>
+        </>
     );
 }
 
